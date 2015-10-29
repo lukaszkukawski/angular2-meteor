@@ -1,7 +1,9 @@
 <ul>
   <li *ng-for="#party of parties">
     {{party.name}}
+    <p>{{party._id}}</p>
     <p>{{party.description}}</p>
     <p>{{party.location}}</p>
+    <hr />
   </li>
 </ul>

@@ -1,25 +1,22 @@
 /// <reference path="../typings/angular2-meteor.d.ts" />
 
-import {Component, View, NgFor} from 'angular2/angular2';
-import {Parties} from 'collections/parties';
+import {Component, View, NgFor, provide} from 'angular2/angular2';
 import {bootstrap} from 'angular2-meteor';
-import {PartiesForm} from 'client/parties-form/parties-form';
+import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, APP_BASE_HREF} from 'angular2/router';
+import {PartiesList} from 'client/parties-list/parties-list'; 
+import {PartyDetails} from 'client/party-details/party-details';
 
 @Component({
     selector: 'app'
 })
 @View({
-    templateUrl: 'client/app.html',
-    directives: [NgFor, PartiesForm]
+    template: '<router-outlet></router-outlet>',
+    directives: [ROUTER_DIRECTIVES]
 })
-class Socially {
-    parties: Mongo.Cursor<Object>;
-    constructor() {
-        this.parties = Parties.find();
-    }
-    removeParty(party) {
-        Parties.remove(party._id);
-    }
-}
+@RouteConfig([
+    {path: '/', as: 'PartiesList', component: PartiesList},
+    {path: '/party/:partyId', as: 'PartyDetails', component: PartyDetails}
+])
+class Socially {}
 
-bootstrap(Socially);
+bootstrap(Socially, [ROUTER_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);

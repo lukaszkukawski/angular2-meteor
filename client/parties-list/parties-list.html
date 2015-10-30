@@ -1,7 +1,7 @@
 <parties-form></parties-form>
 <ul>
   <li *ng-for="#party of parties">
-    {{party.name}}
+    <a [router-link]="['/PartyDetails', {partyId: party._id}]">{{party.name}}</a>
     <p>{{party._id}}</p>
     <p>{{party.description}}</p>
     <p>{{party.location}}</p>
@@ -9,3 +9,4 @@
     <hr />
   </li>
 </ul>
+

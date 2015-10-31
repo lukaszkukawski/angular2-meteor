@@ -14,8 +14,9 @@ import {PartyDetails} from 'client/party-details/party-details';
     directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-    {path: '/', as: 'PartiesList', component: PartiesList},
-    {path: '/party/:partyId', as: 'PartyDetails', component: PartyDetails}
+    { path: '/', redirectTo: '/parties'},
+    {path: '/parties', as: 'PartiesList', component: PartiesList},
+    { path: '/party/:partyId', as: 'PartyDetails', component: PartyDetails}
 ])
 class Socially {}
 

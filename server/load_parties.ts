@@ -2,7 +2,7 @@ import {Parties} from 'collections/parties';
 
 export function loadParties() {
     if (Parties.find().count() === 0) {
-      var parties = [
+        var parties:IParty[] = [
                {
                 'name': 'Dubstep-Free Zone',
                 'description': 'Can we please just for an evening not listen to dubstep.',

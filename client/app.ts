@@ -15,7 +15,7 @@ import {PartyDetails} from 'client/party-details/party-details';
 })
 @RouteConfig([
     { path: '/', redirectTo: '/parties'},
-    {path: '/parties', as: 'PartiesList', component: PartiesList},
+    { path: '/parties', as: 'PartiesList', component: PartiesList},
     { path: '/party/:partyId', as: 'PartyDetails', component: PartyDetails}
 ])
 class Socially {}
